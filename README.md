@@ -3,3 +3,7 @@ This is done for minor project.
 
 May 2021
 
+Team members:
+AKshay V nayak
+Karthik B S
+Sudhanva L C
