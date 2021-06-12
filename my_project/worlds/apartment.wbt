@@ -1,0 +1,190 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Sample of how the indoor objects can be placed"
+  ]
+  basicTimeStep 16
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.3383326750982004 0.8786911373172164 0.336797990138113 1.6952492915948143
+  position 15.128062689379064 12.782367355042714 4.79118867334496
+  exposure 0.5
+}
+TexturedBackground {
+  texture "empty_office"
+  skybox FALSE
+  skyColor [
+    0.2 0.2 0.2
+  ]
+}
+DEF FLOOR Solid {
+  translation 3.3 0 4.95
+  children [
+    Shape {
+      appearance Parquetry {
+        textureTransform TextureTransform {
+          scale 6 9
+        }
+      }
+      geometry DEF FLOOR_PLANE Plane {
+        size 6.6 9.9
+      }
+    }
+  ]
+  name "floor"
+  boundingObject USE FLOOR_PLANE
+  locked TRUE
+}
+DEF ROOF Solid {
+  translation 3.3 2.4 4.95
+  rotation 1 0 0 3.14159
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "textures/roughcast.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          scale 8 8
+        }
+      }
+      geometry USE FLOOR_PLANE
+    }
+  ]
+  name "roof"
+  boundingObject USE FLOOR_PLANE
+  locked TRUE
+}
+Wall {
+  translation 0.65 0 0
+  name "wall 1"
+  size 1 2.4 0.3
+}
+Window {
+  translation 1.65 0 0
+  name "window 1"
+  size 1 2.4 0.3
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+}
+Wall {
+  translation 4.3 0 0
+  name "wall 2"
+  size 4.3 2.4 0.3
+}
+Wall {
+  translation 2.3 0 9.9
+  name "wall 3"
+  size 4.3 2.4 0.3
+}
+Wall {
+  translation 5.95 0 9.9
+  name "wall 4"
+  size 1 2.4 0.3
+}
+Door {
+  translation 4.95 0 9.9
+  rotation 0 1 0 3.14159
+  name "door 1"
+  size 1 2.4 0.3
+  canBeOpen FALSE
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+  doorHandle DoorLever {
+    hasStaticParent TRUE
+  }
+}
+Wall {
+  translation 0 0 3.8
+  rotation 0 1 0 1.5708
+  name "wall 5"
+  size 7.9 2.4 0.3
+}
+Wall {
+  translation 0 0 9.4
+  rotation 0 1 0 1.5708
+  name "wall 6"
+  size 1.3 2.4 0.3
+}
+Window {
+  translation 0 0 8.25
+  rotation 0 1 0 1.5708
+  name "window 2"
+  size 1 2.4 0.3
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+}
+Wall {
+  translation 6.6 0 9.4
+  rotation 0 1 0 1.5708
+  name "wall 7"
+  size 1.3 2.4 0.3
+}
+Door {
+  translation 6.6 0 8.25
+  rotation 0 1 0 -1.5708
+  name "door 2"
+  size 1 2.4 0.3
+  canBeOpen FALSE
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+  doorHandle DoorLever {
+    rotation -0.0012868889344011497 0.9999991719580925 0 0
+    hasStaticParent TRUE
+  }
+}
+Wall {
+  translation 6.6 0 3.8
+  rotation 0 1 0 1.5708
+  name "wall 8"
+  size 7.9 2.4 0.3
+}
+CeilingLight {
+  translation 2.47061 2.4 1.3341
+  name "ceiling light 1"
+  pointLightIntensity 5
+}
+CeilingLight {
+  translation 2.44317 2.4 7.10107
+  name "ceiling light 2"
+  pointLightIntensity 8
+}
+PortraitPainting {
+  translation 2.47 1.6 9.73
+  rotation 0 1 0 3.14159
+}
+LandscapePainting {
+  translation 4.92523 1.62868 0.184484
+}
+Create {
+  hidden position_0_0 6421.724661448422
+  hidden position_0_1 5851.939019423158
+  hidden linearVelocity_0 -0.046155678072490165 1.0504482294055865e-05 0.4938343165313472
+  hidden angularVelocity_0 0.0002034543590018537 0.0002382051182836731 5.4168127418419376e-05
+  hidden rotation_1 -0.9999999999999999 0 0 0.3092775108846328
+  hidden linearVelocity_1 -0.046145784953625604 -1.2526383887610943e-06 0.493853330663603
+  hidden angularVelocity_1 15.930744474133222 9.169645659483358e-05 1.4893020091274616
+  hidden rotation_2 1 0 0 3.9896868682163538
+  hidden linearVelocity_2 -0.046169462932727875 -1.032030027833195e-06 0.4938338059700554
+  hidden angularVelocity_2 15.93075026908181 7.54720730375654e-05 1.4892285662289582
+  hidden translation_6 -6.872308810912386e-08 -3.127028687988087e-06 -2.439329337411422e-07
+  hidden rotation_6 -8.065576061966726e-12 1 -8.30846710368083e-12 0.7269320000121312
+  hidden linearVelocity_6 -0.04613151587255723 -6.84711730713163e-06 0.493812415345265
+  hidden angularVelocity_6 0.0002034542396844899 0.00023820496846082206 5.4168031167066514e-05
+  hidden translation_7 8.879324525645771e-08 -3.143057252977255e-06 -2.2095242580011387e-07
+  hidden rotation_7 9.59675629263948e-12 1 -1.5923492498297783e-11 -0.7269299999893344
+  hidden linearVelocity_7 -0.04613293012430556 -1.264127514241668e-05 0.4938539842185528
+  hidden angularVelocity_7 0.00020345421932140513 0.00023820499148468583 5.416819947640795e-05
+  translation 0.38240096225904185 0.04460180059176385 0.693112705070501
+  rotation 1.9971146010255284e-05 0.9999999358757007 -0.000357560831150585 3.048377964483571
+}
