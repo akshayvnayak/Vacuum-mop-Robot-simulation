@@ -1,0 +1,13 @@
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/_setup_util.py
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/env.sh
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/setup.bash
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/local_setup.bash
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/setup.sh
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/local_setup.sh
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/setup.zsh
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/local_setup.zsh
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/.rosinstall
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/lib/pkgconfig/beginner_tutorials.pc
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/share/beginner_tutorials/cmake/beginner_tutorialsConfig.cmake
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/share/beginner_tutorials/cmake/beginner_tutorialsConfig-version.cmake
+/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install/share/beginner_tutorials/package.xml
