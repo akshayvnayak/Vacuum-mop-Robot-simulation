@@ -1,0 +1,8 @@
+prefix=/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install
+
+Name: beginner_tutorials
+Description: Description of beginner_tutorials
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

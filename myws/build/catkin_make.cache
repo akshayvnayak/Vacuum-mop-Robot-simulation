@@ -1,0 +1,2 @@
+beginner_tutorials
+-DCATKIN_DEVEL_PREFIX=/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/devel -DCMAKE_INSTALL_PREFIX=/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/install -G Unix Makefiles
