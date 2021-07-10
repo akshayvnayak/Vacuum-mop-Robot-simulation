@@ -1,0 +1,8 @@
+prefix=/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/devel
+
+Name: voxel_grid
+Description: Description of voxel_grid
+Version: 1.17.1
+Cflags: -I/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/voxel_grid/include
+Libs: -L${prefix}/lib -lvoxel_grid
+Requires: roscpp

@@ -1,0 +1,33 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/devel/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/amcl/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/base_local_planner/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/myws/src/beginner_tutorials/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/carrot_planner/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/clear_costmap_recovery/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/costmap_2d/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/dwa_local_planner/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/global_planner/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/map_server/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/move_base/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/move_slow_and_clear/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/nav_core/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/navfn/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/rotate_recovery/include/**",
+        "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/catkin_ws/src/navigation/voxel_grid/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
