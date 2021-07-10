@@ -1,0 +1,6 @@
+[submodule "mop_robot_ws/src/slam_gmapping"]
+	path = mop_robot_ws/src/slam_gmapping
+	url = https://github.com/ros-perception/slam_gmapping.git
+[submodule "mop_robot_ws/src/navigation"]
+	path = mop_robot_ws/src/navigation
+	url = https://github.com/ros-planning/navigation.git
