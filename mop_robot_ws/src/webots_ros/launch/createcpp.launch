@@ -5,9 +5,9 @@
   <include file="$(find webots_ros)/launch/webots.launch">
     <arg name="mode" value="realtime"/>
     <arg name="no_gui" value="$(arg no_gui)"/>
-    <arg name="world" value="$(find webots_ros)/worlds/create.wbt"/>
+    <arg name="world" value="$(find webots_ros)/worlds/create1.wbt"/>
   </include>
 
   <arg name="auto_close" default="false" doc="Startup mode"/>
-  <node name="create_controller_cpp" pkg="webots_ros" type="create" required="$(arg auto_close)"/>
+  <node name="create_controller_cpp" pkg="webots_ros" type="create" output="screen" required="$(arg auto_close)"/>
 </launch>

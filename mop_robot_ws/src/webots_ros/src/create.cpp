@@ -14,7 +14,7 @@
 
 /*
  * To run gmapping you should start gmapping:
- * rosrun gmapping slam_gmapping scan:=/Create/Sick_LMS_291/laser_scan/layer0 _xmax:=30 _xmin:=-30 _ymax:=30 _ymin:=-30
+ * rosrun gmapping slam_gmapping scan:=/Create/LDS_01/laser_scan/layer0 _xmax:=30 _xmin:=-30 _ymax:=30 _ymin:=-30
  * _delta:=0.2
  */
 
@@ -32,7 +32,7 @@
 
 #define TIME_STEP 32
 #define NMOTORS 2
-#define MAX_SPEED 6.4
+#define MAX_SPEED 50
 #define OBSTACLE_THRESHOLD 0.1
 #define DECREASE_FACTOR 0.9
 #define BACK_SLOWDOWN 0.9
@@ -47,7 +47,7 @@ static std::vector<std::string> controllerList;
 ros::ServiceClient timeStepClient;
 webots_ros::set_int timeStepSrv;
 
-static const char *motorNames[NMOTORS] = {"left_wheel", "right_wheel"};
+static const char *motorNames[NMOTORS] = {"left_wheel_motor", "right_wheel_motor"};
 
 static double GPSValues[2] = {0, 0};
 static double inertialUnitValues[4] = {0, 0, 0, 0};
@@ -86,13 +86,13 @@ void updateSpeed() {
     const double speedFactor = (1.0 - DECREASE_FACTOR * obstacle) * MAX_SPEED / obstacle;
     speeds[0] = speedFactor * leftObstacle;
     speeds[1] = speedFactor * rightObstacle;
-    speeds[2] = BACK_SLOWDOWN * speeds[0];
-    speeds[3] = BACK_SLOWDOWN * speeds[1];
+    // speeds[2] = BACK_SLOWDOWN * speeds[0];
+    // speeds[3] = BACK_SLOWDOWN * speeds[1];
   } else {
     speeds[0] = MAX_SPEED;
     speeds[1] = MAX_SPEED;
-    speeds[2] = MAX_SPEED;
-    speeds[3] = MAX_SPEED;
+    // speeds[2] = MAX_SPEED;
+    // speeds[3] = MAX_SPEED;
   }
   // set speeds
   for (int i = 0; i < NMOTORS; ++i) {
@@ -118,7 +118,7 @@ void broadcastTransform() {
   // Publish Lidar transform (inverted to match ENU)
   transform.setIdentity();
   transform.setRotation(tf::Quaternion(tf::Vector3(1, 0, 0), M_PI));
-  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "Create/Sick_LMS_291"));
+  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "Create/LDS_01"));
 }
 
 void GPSCallback(const geometry_msgs::PointStamped::ConstPtr &values) {
@@ -240,11 +240,11 @@ int main(int argc, char **argv) {
   webots_ros::set_int lidar_srv;
   ros::Subscriber sub_lidar_scan;
 
-  set_lidar_client = n->serviceClient<webots_ros::set_int>("Create/Sick_LMS_291/enable");
+  set_lidar_client = n->serviceClient<webots_ros::set_int>("Create/LDS_01/enable");
   lidar_srv.request.value = TIME_STEP;
   if (set_lidar_client.call(lidar_srv) && lidar_srv.response.success) {
     ROS_INFO("Lidar enabled.");
-    sub_lidar_scan = n->subscribe("Create/Sick_LMS_291/laser_scan/layer0", 10, lidarCallback);
+    sub_lidar_scan = n->subscribe("Create/LDS_01/laser_scan/layer0", 10, lidarCallback);
     ROS_INFO("Topic for lidar initialized.");
     while (sub_lidar_scan.getNumPublishers() == 0) {
     }
@@ -315,7 +315,7 @@ int main(int argc, char **argv) {
   set_gyro_client.call(gyro_srv);
 
   ROS_INFO("You can now start the creation of the map using 'rosrun gmapping slam_gmapping "
-           "scan:=/Create/Sick_LMS_291/laser_scan/layer0 _xmax:=30 _xmin:=-30 _ymax:=30 _ymin:=-30 _delta:=0.2'.");
+           "scan:=/Create/LDS_01/laser_scan/layer0 _xmax:=30 _xmin:=-30 _ymax:=30 _ymin:=-30 _delta:=0.2'.");
   ROS_INFO("You can now visualize the sensors output in rqt using 'rqt'.");
 
   // main loop

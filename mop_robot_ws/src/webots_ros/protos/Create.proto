@@ -68,7 +68,7 @@ Robot {
       }
       device [
         RotationalMotor {
-          name "left_wheel"
+          name "left wheel motor"
           maxVelocity 16.129
         }
         PositionSensor {
@@ -407,7 +407,7 @@ Robot {
       }
       device [
         RotationalMotor {
-          name "right_wheel"
+          name "right wheel motor"
           maxVelocity 16.129
         }
         PositionSensor {
