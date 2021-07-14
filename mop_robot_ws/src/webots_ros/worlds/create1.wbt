@@ -1,0 +1,223 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Sample of how the indoor objects can be placed"
+  ]
+  basicTimeStep 16
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.9174410910973297 0.20054298069017057 0.343634045551431 0.2669313252712165
+  position 5.2482508410829745 0.015611168490038723 8.458984977461188
+  exposure 0.5
+}
+TexturedBackground {
+  texture "empty_office"
+  skybox FALSE
+  skyColor [
+    0.2 0.2 0.2
+  ]
+}
+DEF FLOOR Solid {
+  translation 3.3 0 4.95
+  children [
+    Shape {
+      appearance Parquetry {
+        textureTransform TextureTransform {
+          scale 6 9
+        }
+      }
+      geometry DEF FLOOR_PLANE Plane {
+        size 6.6 9.9
+      }
+    }
+  ]
+  name "floor"
+  boundingObject USE FLOOR_PLANE
+  locked TRUE
+}
+DEF ROOF Solid {
+  translation 3.3 2.4 4.95
+  rotation 1 0 0 3.14159
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "textures/roughcast.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          scale 8 8
+        }
+      }
+      geometry USE FLOOR_PLANE
+    }
+  ]
+  name "roof"
+  boundingObject USE FLOOR_PLANE
+  locked TRUE
+}
+Wall {
+  translation 0.65 0 0
+  name "wall 1"
+  size 1 2.4 0.3
+}
+Window {
+  translation 1.65 0 0
+  name "window 1"
+  size 1 2.4 0.3
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+}
+Wall {
+  translation 4.3 0 0
+  name "wall 2"
+  size 4.3 2.4 0.3
+}
+Wall {
+  translation 2.3 0 9.9
+  name "wall 3"
+  size 4.3 2.4 0.3
+}
+Wall {
+  translation 5.95 0 9.9
+  name "wall 4"
+  size 1 2.4 0.3
+}
+Door {
+  translation 4.95 0 9.9
+  rotation 0 1 0 3.14159
+  name "door 1"
+  size 1 2.4 0.3
+  canBeOpen FALSE
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+  doorHandle DoorLever {
+    hasStaticParent TRUE
+  }
+}
+Wall {
+  translation 0 0 3.8
+  rotation 0 1 0 1.5708
+  name "wall 5"
+  size 7.9 2.4 0.3
+}
+Wall {
+  translation 0 0 9.4
+  rotation 0 1 0 1.5708
+  name "wall 6"
+  size 1.3 2.4 0.3
+}
+Window {
+  translation 0 0 8.25
+  rotation 0 1 0 1.5708
+  name "window 2"
+  size 1 2.4 0.3
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+}
+Wall {
+  translation 6.6 0 9.4
+  rotation 0 1 0 1.5708
+  name "wall 7"
+  size 1.3 2.4 0.3
+}
+Door {
+  translation 6.6 0 8.25
+  rotation 0 1 0 -1.5708
+  name "door 2"
+  size 1 2.4 0.3
+  canBeOpen FALSE
+  frameAppearance PaintedWood {
+    colorOverride 0.13333333333333333 0.13333333333333333 0.13333333333333333
+  }
+  doorHandle DoorLever {
+    rotation -0.0012868889344011497 0.9999991719580925 0 0
+    hasStaticParent TRUE
+  }
+}
+Wall {
+  translation 6.6 0 3.8
+  rotation 0 1 0 1.5708
+  name "wall 8"
+  size 7.9 2.4 0.3
+}
+CeilingLight {
+  translation 2.47061 2.4 1.3341
+  name "ceiling light 1"
+  pointLightIntensity 5
+}
+CeilingLight {
+  translation 2.44317 2.4 7.10107
+  name "ceiling light 2"
+  pointLightIntensity 8
+}
+PortraitPainting {
+  translation 2.47 1.6 9.73
+  rotation 0 1 0 3.14159
+}
+LandscapePainting {
+  translation 4.92523 1.62868 0.184484
+}
+Create {
+  hidden position_0_0 451.37426968939025
+  hidden position_0_1 451.55497568185666
+  hidden linearVelocity_0 1.1727809209137623e-10 4.939888067917552e-09 -1.6369354748640624e-07
+  hidden angularVelocity_0 2.394690721619845e-07 4.057854862075037e-13 1.7098476807121935e-10
+  hidden rotation_7 0.9999999999978283 -1.0176839438552018e-06 1.8187762452232366e-06 1.0150715611880343
+  hidden linearVelocity_7 1.897496397563497e-10 6.272908534332449e-09 -2.6534959579371936e-07
+  hidden angularVelocity_7 -9.966906458982394e-06 -1.3165924433804141e-08 -7.123973906278741e-09
+  hidden rotation_8 0.9999999999968711 1.0195410955510752e-06 -2.284354025485041e-06 0.834365531552326
+  hidden linearVelocity_8 1.9048899859711814e-10 6.272842295084746e-09 -2.653497156562583e-07
+  hidden angularVelocity_8 -9.966910412311747e-06 1.3166490902756417e-08 -7.158817118410949e-09
+  hidden translation_12 -1.3580446545091718e-07 -4.6789807711458686e-05 7.527464905621173e-06
+  hidden rotation_12 -2.0137387797975805e-07 0.9999999999999707 -1.3313876221970314e-07 0.7269311854828348
+  hidden linearVelocity_12 1.1701247191536174e-10 -1.8332896534190013e-08 -1.6325269465424892e-07
+  hidden angularVelocity_12 2.3946897746954626e-07 4.0574270904779503e-13 1.7092245755556824e-10
+  hidden translation_13 1.0076918499635212e-07 -4.679253105070724e-05 7.550309306658676e-06
+  hidden rotation_13 2.012838848754185e-07 0.9999999999999709 -1.3357559425968684e-07 -0.7269291849111151
+  hidden linearVelocity_13 1.1700236162262014e-10 -1.833283166163824e-08 -1.632526248371819e-07
+  hidden angularVelocity_13 2.3946897749257857e-07 4.0721735479626425e-13 1.7104622149968823e-10
+  translation 5.268272974884079 0.044602599043492605 7.7173647671326435
+  rotation 1.1670877553462402e-07 0.9999999388428493 -0.0003497345912381803 3.140876204340904
+  controller "ros"
+  controllerArgs [
+    "--name=Create"
+  ]
+  bodySlot [
+    SickLms291 {
+      translation 0 0.13 0
+      name "LDS_01"
+    }
+    InertialUnit {
+      rotation 0 1 0 1.5707996938995747
+    }
+    Gyro {
+      lookupTable [
+        -50 -50 0.005
+        50 49 0.005
+      ]
+    }
+    GPS {
+    }
+    Accelerometer {
+      lookupTable [
+        -39.24 -39.24 0.005
+        39.24 39.24 0.005
+      ]
+    }
+    Camera {
+      translation 0 0.04 -0.17
+      width 256
+      height 128
+      motionBlur 15
+    }
+  ]
+}
