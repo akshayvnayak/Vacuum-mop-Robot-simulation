@@ -28,8 +28,9 @@
 
 #define TIME_STEP 32
 
-#define POSITION_INCREAMENT 0.15
-#define BACK_SLOWDOWN 1
+#define POSITION_INCREAMENT 0.3
+#define TURN_INCREAMENT 0.2
+#define BACK_SLOWDOWN 0.9
 
 static int controllerCount;
 static std::vector<std::string> controllerList;
@@ -81,24 +82,28 @@ void keyboardCallback(const webots_ros::Int32Stamped::ConstPtr &value) {
   int send = 0;
 
   switch (key) {
+    //LEFT
     case 314:
-      lposition += -0.2;
-      rposition += 0.2;
+      lposition += -TURN_INCREAMENT;
+      rposition += TURN_INCREAMENT;
       send = 1;
       break;
+    //RIGHT
     case 316:
-      lposition += 0.2;
-      rposition += -0.2;
+      lposition += TURN_INCREAMENT;
+      rposition += -TURN_INCREAMENT;
       send = 1;
       break;
+    //FORWARD
     case 315:
-      lposition += 0.2;
-      rposition += 0.2;
+      lposition += POSITION_INCREAMENT;
+      rposition += POSITION_INCREAMENT;
       send = 1;
       break;
+    //BACKWARD
     case 317:
-      lposition += -0.2;
-      rposition += -0.2;
+      lposition += -POSITION_INCREAMENT;
+      rposition += -POSITION_INCREAMENT;
       send = 1;
       break;
     case 312:
@@ -116,8 +121,8 @@ void keyboardCallback(const webots_ros::Int32Stamped::ConstPtr &value) {
   rbWheelSrv.request.value = BACK_SLOWDOWN * rposition;
   if (send) {
     if (!leftWheelClient.call(leftWheelSrv) || !rightWheelClient.call(rightWheelSrv) || 
-        !leftWheelSrv.response.success || !rightWheelSrv.response.success || 
         !lbWheelClient.call(lbWheelSrv) || !rbWheelClient.call(rbWheelSrv) || 
+        !leftWheelSrv.response.success || !rightWheelSrv.response.success || 
         !lbWheelSrv.response.success || !rbWheelSrv.response.success)      
       ROS_ERROR("Failed to send new position commands to the robot.");
   }

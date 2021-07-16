@@ -11,5 +11,5 @@ export CMAKE_PREFIX_PATH="/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-
 export LD_LIBRARY_PATH="/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/lib:$LD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PYTHONPATH="/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/lib/python3/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROSLISP_PACKAGE_DIRECTORIES='/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/share/common-lisp'
 export ROS_PACKAGE_PATH="/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros:$ROS_PACKAGE_PATH"
