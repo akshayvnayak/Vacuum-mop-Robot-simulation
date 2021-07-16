@@ -64,46 +64,7 @@ double gaussian(double x, double mu, double sigma) {
   return (1.0 / (sigma * sqrt(2.0 * M_PI))) * exp(-((x - mu) * (x - mu)) / (2 * sigma * sigma));
 }
 
-void updateSpeed() {
-  // init dynamic variables
-  double leftObstacle = 0.0, rightObstacle = 0.0, obstacle = 0.0;
-  double speeds[NMOTORS];
-  // apply the braitenberg coefficients on the resulted values of the lms291
-  // near obstacle sensed on the left side
-  for (int i = 0; i < halfResolution; ++i) {
-    if (lidarValues[i] < rangeThreshold)  // far obstacles are ignored
-      leftObstacle += braitenbergCoefficients[i] * (1.0 - lidarValues[i] / maxRange);
-    // near obstacle sensed on the right side
-    int j = lms291Resolution - i - 1;
-    if (lidarValues[j] < rangeThreshold)
-      rightObstacle += braitenbergCoefficients[i] * (1.0 - lidarValues[j] / maxRange);
-  }
-  // overall front obstacle
-  obstacle = leftObstacle + rightObstacle;
-  // compute the speed according to the information on
-  // obstacles
-  if (obstacle > OBSTACLE_THRESHOLD) {
-    const double speedFactor = (1.0 - DECREASE_FACTOR * obstacle) * MAX_SPEED / obstacle;
-    speeds[0] = speedFactor * leftObstacle;
-    speeds[1] = speedFactor * rightObstacle;
-    speeds[2] = BACK_SLOWDOWN * speeds[0];
-    speeds[3] = BACK_SLOWDOWN * speeds[1];
-  } else {
-    speeds[0] = MAX_SPEED;
-    speeds[1] = MAX_SPEED;
-    speeds[2] = MAX_SPEED;
-    speeds[3] = MAX_SPEED;
-  }
-  // set speeds
-  for (int i = 0; i < NMOTORS; ++i) {
-    ros::ServiceClient set_velocity_client;
-    webots_ros::set_float set_velocity_srv;
-    set_velocity_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
-                                                                  std::string("/set_velocity"));
-    set_velocity_srv.request.value = speeds[i];
-    set_velocity_client.call(set_velocity_srv);
-  }
-}
+
 
 void broadcastTransform() {
   static tf::TransformBroadcaster br;
@@ -136,23 +97,7 @@ void inertialUnitCallback(const sensor_msgs::Imu::ConstPtr &values) {
 }
 
 void lidarCallback(const sensor_msgs::LaserScan::ConstPtr &scan) {
-  int scanSize = scan->ranges.size();
-  lidarValues.resize(scanSize);
-  for (int i = 0; i < scanSize; ++i)
-    lidarValues[i] = scan->ranges[i];
-
-  lms291Resolution = scanSize;
-  halfResolution = scanSize / 2;
-  maxRange = scan->range_max;
-  rangeThreshold = maxRange / 20.0;
-  if (!areBraitenbergCoefficientsinitialized) {
-    braitenbergCoefficients.resize(lms291Resolution);
-    for (int i = 0; i < lms291Resolution; ++i)
-      braitenbergCoefficients[i] = gaussian(i, halfResolution, lms291Resolution / 5);
-    areBraitenbergCoefficientsinitialized = true;
-  }
-
-  // updateSpeed();
+  
 }
 
 // catch names of the controllers availables on ROS network
@@ -208,33 +153,6 @@ int main(int argc, char **argv) {
   // leave topic once it is not necessary anymore
   nameSub.shutdown();
 
-  // // init motors
-  // for (int i = 0; i < NMOTORS; ++i) {
-  //   // position
-  //   ros::ServiceClient set_position_client;
-  //   webots_ros::set_float set_position_srv;
-  //   set_position_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
-  //                                                                 std::string("/set_position"));
-
-  //   set_position_srv.request.value = INFINITY;
-  //   if (set_position_client.call(set_position_srv) && set_position_srv.response.success)
-  //     ROS_INFO("Position set to INFINITY for motor %s.", motorNames[i]);
-  //   else
-  //     ROS_ERROR("Failed to call service set_position on motor %s.", motorNames[i]);
-
-  //   // speed
-  //   ros::ServiceClient set_velocity_client;
-  //   webots_ros::set_float set_velocity_srv;
-  //   set_velocity_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
-  //                                                                 std::string("/set_velocity"));
-
-  //   set_velocity_srv.request.value = 0.0;
-  //   if (set_velocity_client.call(set_velocity_srv) && set_velocity_srv.response.success == 1)
-  //     ROS_INFO("Velocity set to 0.0 for motor %s.", motorNames[i]);
-  //   else
-  //     ROS_ERROR("Failed to call service set_velocity on motor %s.", motorNames[i]);
-  // }
-
   // enable lidar
   ros::ServiceClient set_lidar_client;
   webots_ros::set_int lidar_srv;
@@ -244,12 +162,12 @@ int main(int argc, char **argv) {
   lidar_srv.request.value = TIME_STEP;
   if (set_lidar_client.call(lidar_srv) && lidar_srv.response.success) {
     ROS_INFO("Lidar enabled.");
-    sub_lidar_scan = n->subscribe("pioneer3at/Sick_LMS_291/laser_scan/layer0", 10, lidarCallback);
-    ROS_INFO("Topic for lidar initialized.");
-    while (sub_lidar_scan.getNumPublishers() == 0) {
-      ROS_INFO_ONCE("WAITING FOR LIDAR PUBLISH.");
-    }
-    ROS_INFO("Topic for lidar scan connected.");
+    // sub_lidar_scan = n->subscribe("pioneer3at/Sick_LMS_291/laser_scan/layer0", 10, lidarCallback);
+    // ROS_INFO("Topic for lidar initialized.");
+    // while (sub_lidar_scan.getNumPublishers() == 0) {
+    //   ROS_INFO_ONCE("WAITING FOR LIDAR PUBLISH.");
+    // }
+    // ROS_INFO("Topic for lidar scan connected.");
   } else {
     if (!lidar_srv.response.success)
       ROS_ERROR("Sampling period is not valid.");

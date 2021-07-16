@@ -28,8 +28,8 @@
 
 #define TIME_STEP 32
 
-#define POSITION_INCREAMENT 0.3
-#define TURN_INCREAMENT 0.2
+#define POSITION_INCREAMENT 0.7
+#define TURN_INCREAMENT 0.3
 #define BACK_SLOWDOWN 0.9
 
 static int controllerCount;
