@@ -152,7 +152,7 @@ void lidarCallback(const sensor_msgs::LaserScan::ConstPtr &scan) {
     areBraitenbergCoefficientsinitialized = true;
   }
 
-  updateSpeed();
+  // updateSpeed();
 }
 
 // catch names of the controllers availables on ROS network
@@ -208,32 +208,32 @@ int main(int argc, char **argv) {
   // leave topic once it is not necessary anymore
   nameSub.shutdown();
 
-  // init motors
-  for (int i = 0; i < NMOTORS; ++i) {
-    // position
-    ros::ServiceClient set_position_client;
-    webots_ros::set_float set_position_srv;
-    set_position_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
-                                                                  std::string("/set_position"));
+  // // init motors
+  // for (int i = 0; i < NMOTORS; ++i) {
+  //   // position
+  //   ros::ServiceClient set_position_client;
+  //   webots_ros::set_float set_position_srv;
+  //   set_position_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
+  //                                                                 std::string("/set_position"));
 
-    set_position_srv.request.value = INFINITY;
-    if (set_position_client.call(set_position_srv) && set_position_srv.response.success)
-      ROS_INFO("Position set to INFINITY for motor %s.", motorNames[i]);
-    else
-      ROS_ERROR("Failed to call service set_position on motor %s.", motorNames[i]);
+  //   set_position_srv.request.value = INFINITY;
+  //   if (set_position_client.call(set_position_srv) && set_position_srv.response.success)
+  //     ROS_INFO("Position set to INFINITY for motor %s.", motorNames[i]);
+  //   else
+  //     ROS_ERROR("Failed to call service set_position on motor %s.", motorNames[i]);
 
-    // speed
-    ros::ServiceClient set_velocity_client;
-    webots_ros::set_float set_velocity_srv;
-    set_velocity_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
-                                                                  std::string("/set_velocity"));
+  //   // speed
+  //   ros::ServiceClient set_velocity_client;
+  //   webots_ros::set_float set_velocity_srv;
+  //   set_velocity_client = n->serviceClient<webots_ros::set_float>(std::string("pioneer3at/") + std::string(motorNames[i]) +
+  //                                                                 std::string("/set_velocity"));
 
-    set_velocity_srv.request.value = 0.0;
-    if (set_velocity_client.call(set_velocity_srv) && set_velocity_srv.response.success == 1)
-      ROS_INFO("Velocity set to 0.0 for motor %s.", motorNames[i]);
-    else
-      ROS_ERROR("Failed to call service set_velocity on motor %s.", motorNames[i]);
-  }
+  //   set_velocity_srv.request.value = 0.0;
+  //   if (set_velocity_client.call(set_velocity_srv) && set_velocity_srv.response.success == 1)
+  //     ROS_INFO("Velocity set to 0.0 for motor %s.", motorNames[i]);
+  //   else
+  //     ROS_ERROR("Failed to call service set_velocity on motor %s.", motorNames[i]);
+  // }
 
   // enable lidar
   ros::ServiceClient set_lidar_client;

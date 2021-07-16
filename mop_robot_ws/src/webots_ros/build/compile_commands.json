@@ -35,11 +35,6 @@
   "file": "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/src/panoramic_view_recorder.cpp"
 },
 {
-  "directory": "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build",
-  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"webots_ros\\\" -I/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -g   -o CMakeFiles/create.dir/src/create.cpp.o -c /mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/src/create.cpp",
-  "file": "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/src/create.cpp"
-},
-{
   "directory": "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/gtest/googlemock",
   "command": "/usr/bin/c++  -DGTEST_CREATE_SHARED_LIBRARY=1 -Dgmock_main_EXPORTS -isystem /usr/src/googletest/googlemock/include -isystem /usr/src/googletest/googlemock -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest  -g -fPIC   -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -DGTEST_HAS_PTHREAD=1 -std=c++11 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /usr/src/googletest/googlemock/src/gmock_main.cc",
   "file": "/usr/src/googletest/googlemock/src/gmock_main.cc"

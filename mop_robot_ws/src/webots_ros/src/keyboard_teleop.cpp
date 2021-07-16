@@ -28,17 +28,30 @@
 
 #define TIME_STEP 32
 
+#define POSITION_INCREAMENT 0.15
+#define BACK_SLOWDOWN 1
+
 static int controllerCount;
 static std::vector<std::string> controllerList;
 static std::string controllerName;
 static double lposition = 0;
 static double rposition = 0;
 
+
+
+
 ros::ServiceClient leftWheelClient;
 webots_ros::set_float leftWheelSrv;
 
+ros::ServiceClient lbWheelClient;
+webots_ros::set_float lbWheelSrv;
+
+
 ros::ServiceClient rightWheelClient;
 webots_ros::set_float rightWheelSrv;
+
+ros::ServiceClient rbWheelClient;
+webots_ros::set_float rbWheelSrv;
 
 ros::ServiceClient timeStepClient;
 webots_ros::set_int timeStepSrv;
@@ -99,9 +112,13 @@ void keyboardCallback(const webots_ros::Int32Stamped::ConstPtr &value) {
 
   leftWheelSrv.request.value = lposition;
   rightWheelSrv.request.value = rposition;
+  lbWheelSrv.request.value = BACK_SLOWDOWN * lposition;
+  rbWheelSrv.request.value = BACK_SLOWDOWN * rposition;
   if (send) {
-    if (!leftWheelClient.call(leftWheelSrv) || !rightWheelClient.call(rightWheelSrv) || !leftWheelSrv.response.success ||
-        !rightWheelSrv.response.success)
+    if (!leftWheelClient.call(leftWheelSrv) || !rightWheelClient.call(rightWheelSrv) || 
+        !leftWheelSrv.response.success || !rightWheelSrv.response.success || 
+        !lbWheelClient.call(lbWheelSrv) || !rbWheelClient.call(rbWheelSrv) || 
+        !lbWheelSrv.response.success || !rbWheelSrv.response.success)      
       ROS_ERROR("Failed to send new position commands to the robot.");
   }
   return;
@@ -139,16 +156,20 @@ int main(int argc, char **argv) {
   // leave topic once it's not necessary anymore
   nameSub.shutdown();
 
-  leftWheelClient = n.serviceClient<webots_ros::set_float>(controllerName + "/left_wheel/set_position");
-  rightWheelClient = n.serviceClient<webots_ros::set_float>(controllerName + "/right_wheel/set_position");
-  timeStepClient = n.serviceClient<webots_ros::set_int>(controllerName + "/robot/time_step");
+  leftWheelClient = n.serviceClient<webots_ros::set_float>("pioneer3at/front_left_wheel/set_position");
+  lbWheelClient = n.serviceClient<webots_ros::set_float>("pioneer3at/back_left_wheel/set_position");
+  rightWheelClient = n.serviceClient<webots_ros::set_float>("pioneer3at/front_right_wheel/set_position");
+  rbWheelClient = n.serviceClient<webots_ros::set_float>("pioneer3at/back_right_wheel/set_position");
+  timeStepClient = n.serviceClient<webots_ros::set_int>("pioneer3at/robot/time_step");
   timeStepSrv.request.value = TIME_STEP;
 
-  enableKeyboardClient = n.serviceClient<webots_ros::set_int>(controllerName + "/keyboard/enable");
+  enableKeyboardClient = n.serviceClient<webots_ros::set_int>("pioneer3at/keyboard/enable");
   enableKeyboardSrv.request.value = TIME_STEP;
+  ROS_INFO("tRYING KEYBOARD");
   if (enableKeyboardClient.call(enableKeyboardSrv) && enableKeyboardSrv.response.success) {
     ros::Subscriber sub_keyboard;
-    sub_keyboard = n.subscribe(controllerName + "/keyboard/key", 1, keyboardCallback);
+    sub_keyboard = n.subscribe("pioneer3at/keyboard/key", 1, keyboardCallback);
+    ROS_INFO("Now");
     while (sub_keyboard.getNumPublishers() == 0) {
     }
     ROS_INFO("Keyboard enabled.");
