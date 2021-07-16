@@ -13,6 +13,7 @@ import geometry_msgs.msg  # import *
 
 TIME_STEP = 32
 MAX_VELOCITY = 10
+THRESHOLD_DISTANCE = 1
 
 motors = ["left_wheel_motor", "right_wheel_motor"]
 gpsValues = [0, 0]
@@ -23,8 +24,50 @@ def controllerNameCallback(data):
     rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
 
 
+def motorVelocity(a, b):
+    rospy.wait_for_service("Create/left_wheel_motor/set_velocity")
+    try:
+        set_velocity_client = rospy.ServiceProxy(
+            "Create/left_wheel_motor/set_velocity", webots_ros.srv.set_float)
+        set_velocity_client(a)
+        rospy.loginfo("left_wheel_motor velocity set to 0")
+    except rospy.ServiceException as e:
+        rospy.logerr(
+            "left_wheel_motor: set_velocity Service call failed: %s" % e)
+
+    rospy.wait_for_service("Create/right_wheel_motor/set_velocity")
+    try:
+        set_velocity_client = rospy.ServiceProxy(
+            "Create/right_wheel_motor/set_velocity", webots_ros.srv.set_float)
+        set_velocity_client(b)
+        rospy.loginfo("right_wheel_motor velocity set to 0")
+    except rospy.ServiceException as e:
+        rospy.logerr(
+            "right_wheel_motor: set_velocity Service call failed: %s" % e)
+
+
 def lidarCallback(data):
-    pass
+    lidarValues = data.ranges
+    # print(lidarValues,len(lidarValues))
+    halfResolution = len(lidarValues)//2
+    left = right = 0
+    for lidarvalue in lidarValues[:halfResolution]:
+        if lidarvalue< THRESHOLD_DISTANCE:
+            left += lidarvalue
+        else:
+            left+=THRESHOLD_DISTANCE
+    for lidarvalue in lidarValues[halfResolution:]:
+        if lidarvalue< THRESHOLD_DISTANCE:
+            right += lidarvalue
+        else:
+            right+=THRESHOLD_DISTANCE
+
+    coefficient = left/right
+    print(left,right,coefficient)
+    motorVelocity(MAX_VELOCITY * left/right, MAX_VELOCITY * right/left)
+
+
+    # pass
     # rospy.loginfo("lidar data: ")
     # for motor in motors:
     #    rospy.wait_for_service("Create/"+motor+"/set_velocity")
@@ -51,8 +94,8 @@ def broadcastTransform():
     )
     # Publish Lidar transform (inverted to match ENU)
     br.sendTransform(
-        (0,0,0),
-        tf.transformations.quaternion_about_axis(math.pi,(1,0,0)),
+        (0, 0, 0),
+        tf.transformations.quaternion_about_axis(math.pi, (1, 0, 0)),
         rospy.Time.now(),
         "Create/LDS_01",
         "base_link"
@@ -104,7 +147,7 @@ for motor in motors:
     try:
         set_velocity_client = rospy.ServiceProxy(
             "Create/"+motor+"/set_velocity", webots_ros.srv.set_float)
-        set_velocity_client(MAX_VELOCITY)
+        set_velocity_client(0)
         rospy.loginfo(motor+" velocity set to 0")
     except rospy.ServiceException as e:
         rospy.logerr(motor+": set_velocityService call failed: %s" % e)
