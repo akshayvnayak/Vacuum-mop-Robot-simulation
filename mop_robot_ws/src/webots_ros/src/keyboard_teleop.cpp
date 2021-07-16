@@ -80,18 +80,21 @@ void quit(int sig) {
 void keyboardCallback(const webots_ros::Int32Stamped::ConstPtr &value) {
   int key = value->data;
   int send = 0;
+  float back_slowdown = 1;
 
   switch (key) {
     //LEFT
     case 314:
       lposition += -TURN_INCREAMENT;
       rposition += TURN_INCREAMENT;
+      back_slowdown = BACK_SLOWDOWN;
       send = 1;
       break;
     //RIGHT
     case 316:
       lposition += TURN_INCREAMENT;
       rposition += -TURN_INCREAMENT;
+      back_slowdown = BACK_SLOWDOWN;
       send = 1;
       break;
     //FORWARD
@@ -117,8 +120,8 @@ void keyboardCallback(const webots_ros::Int32Stamped::ConstPtr &value) {
 
   leftWheelSrv.request.value = lposition;
   rightWheelSrv.request.value = rposition;
-  lbWheelSrv.request.value = BACK_SLOWDOWN * lposition;
-  rbWheelSrv.request.value = BACK_SLOWDOWN * rposition;
+  lbWheelSrv.request.value = back_slowdown * lposition;
+  rbWheelSrv.request.value = back_slowdown * rposition;
   if (send) {
     if (!leftWheelClient.call(leftWheelSrv) || !rightWheelClient.call(rightWheelSrv) || 
         !lbWheelClient.call(lbWheelSrv) || !rbWheelClient.call(rbWheelSrv) || 
