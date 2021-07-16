@@ -436,26 +436,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/webots_ros" TYPE EXECUTABLE FILES "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/devel/lib/webots_ros/create")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create"
-         OLD_RPATH "/opt/ros/noetic/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/webots_ros/create")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/webots_ros" TYPE PROGRAM FILES "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/catkin_generated/installspace/ros_controller.py")
 endif()
 
@@ -465,10 +445,6 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/webots_ros" TYPE PROGRAM FILES "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/catkin_generated/installspace/webots_launcher.py")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/webots_ros" TYPE PROGRAM FILES "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/webots_ros/build/catkin_generated/installspace/create.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

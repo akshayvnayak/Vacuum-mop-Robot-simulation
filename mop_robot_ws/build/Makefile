@@ -5030,19 +5030,6 @@ _webots_ros_generate_messages_check_deps_speaker_play_sound/fast:
 .PHONY : _webots_ros_generate_messages_check_deps_speaker_play_sound/fast
 
 #=============================================================================
-# Target rules for targets named create
-
-# Build rule for target.
-create: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 create
-.PHONY : create
-
-# fast build rule for target.
-create/fast:
-	$(MAKE) -f webots_ros/CMakeFiles/create.dir/build.make webots_ros/CMakeFiles/create.dir/build
-.PHONY : create/fast
-
-#=============================================================================
 # Target rules for targets named _webots_ros_generate_messages_check_deps_field_get_float
 
 # Build rule for target.
@@ -6326,7 +6313,6 @@ help:
 	@echo "... _webots_ros_generate_messages_check_deps_display_image_paste"
 	@echo "... _webots_ros_generate_messages_check_deps_RecognitionObject"
 	@echo "... _webots_ros_generate_messages_check_deps_speaker_play_sound"
-	@echo "... create"
 	@echo "... _webots_ros_generate_messages_check_deps_field_get_float"
 	@echo "... webots_ros_generate_messages"
 	@echo "... _webots_ros_generate_messages_check_deps_display_draw_polygon"
