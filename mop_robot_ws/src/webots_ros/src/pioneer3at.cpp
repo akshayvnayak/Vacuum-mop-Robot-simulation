@@ -247,7 +247,7 @@ int main(int argc, char **argv) {
     sub_lidar_scan = n->subscribe("pioneer3at/Sick_LMS_291/laser_scan/layer0", 10, lidarCallback);
     ROS_INFO("Topic for lidar initialized.");
     while (sub_lidar_scan.getNumPublishers() == 0) {
-      ROS_INFO_ONCE("WAITING FOR LIDAR PUBLISH.")
+      ROS_INFO_ONCE("WAITING FOR LIDAR PUBLISH.");
     }
     ROS_INFO("Topic for lidar scan connected.");
   } else {
