@@ -19,7 +19,7 @@ add_custom_target(navfn_generate_messages ALL)
 
 get_filename_component(_filename "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv" NAME_WE)
 add_custom_target(_navfn_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "navfn" "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv" "geometry_msgs/PoseStamped:geometry_msgs/Point:std_msgs/Header:geometry_msgs/Pose:geometry_msgs/Quaternion"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "navfn" "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv" "geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/PoseStamped:geometry_msgs/Pose:std_msgs/Header"
 )
 
 get_filename_component(_filename "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/SetCostmap.srv" NAME_WE)
@@ -38,7 +38,7 @@ add_custom_target(_navfn_generate_messages_check_deps_${_filename}
 _generate_srv_cpp(navfn
   "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/navfn
 )
 _generate_srv_cpp(navfn
@@ -79,7 +79,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS navfn_generate_messages_cpp)
 _generate_srv_eus(navfn
   "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/navfn
 )
 _generate_srv_eus(navfn
@@ -120,7 +120,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS navfn_generate_messages_eus)
 _generate_srv_lisp(navfn
   "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/navfn
 )
 _generate_srv_lisp(navfn
@@ -161,7 +161,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS navfn_generate_messages_lisp)
 _generate_srv_nodejs(navfn
   "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/navfn
 )
 _generate_srv_nodejs(navfn
@@ -202,7 +202,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS navfn_generate_messages_nodejs)
 _generate_srv_py(navfn
   "/mnt/2AB63CB0B63C7DFF/Projects/minor/Vacuum-mop-Robot-simulation/mop_robot_ws/src/navigation/navfn/srv/MakeNavPlan.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg"
+  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/navfn
 )
 _generate_srv_py(navfn
